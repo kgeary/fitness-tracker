@@ -1,27 +1,19 @@
 {
-  "name": "fitness-tracker",
+  "name": "mongoose_skeleton",
   "version": "1.0.0",
-  "description": "A fitness tracker app using MongoDB",
+  "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "nodemon server.js"
+    "start": "node server.js",
+    "watch": "nodemon server.js",
+    "seed": "node seeders/seed.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kgeary/fitness-tracker.git"
-  },
-  "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/kgeary/fitness-tracker/issues"
-  },
-  "homepage": "https://github.com/kgeary/fitness-tracker#readme",
   "dependencies": {
-    "express": "^4.17.1",
-    "mongodb": "^3.5.2",
-    "mongoose": "^5.8.11"
+    "express": "^4.16.3",
+    "mongoose": "^5.3.16",
+    "morgan": "^1.9.1"
   }
 }
