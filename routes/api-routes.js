@@ -1,4 +1,4 @@
-const db = require("./models");
+const db = require("../models");
 
 String.prototype.toObjectId = function () {
   var ObjectId = (require('mongoose').Types.ObjectId);
@@ -6,24 +6,6 @@ String.prototype.toObjectId = function () {
 };
 
 module.exports = function (app) {
-  // ****************************************************
-  // HTML ROUTES
-  // ****************************************************
-  app.get("/", (req, res) => {
-    res.sendFile("index.html", { root: "public" });
-  });
-
-  app.get("/exercise", (req, res) => {
-    res.sendFile("exercise.html", { root: "public" });
-  });
-
-  app.get("/stats", (req, res) => {
-    res.sendFile("stats.html", { root: "public" });
-  });
-
-  // ****************************************************
-  // API ROUTES
-  // ****************************************************
 
   // GET /api/workouts
   app.get("/api/workouts", async (req, res) => {
