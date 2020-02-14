@@ -33,15 +33,24 @@ module.exports = function (app) {
 
   // PUT /api/workouts/:id
   app.put("/api/workouts/:id", async (req, res) => {
-    const data = await db.Workout.update(
-      {
-        _id: req.params.id.toObjectId()
-      },
-      {
-        $push: { exercises: req.body }
-      });
-    console.log(data);
-    res.json(data);
+    try {
+      const data = await db.Workout.updateOne(
+        {
+          _id: req.params.id.toObjectId()
+        },
+        {
+          $push: { exercises: req.body }
+        },
+        {
+          runValidators: true
+        });
+      console.log(data);
+      res.json(data);
+
+    } catch (err) {
+      console.log(JSON.stringify(err.errors['exercises'].message));
+      res.sendStatus(400);
+    }
   });
 
   // GET /api/workouts/range

@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const ExerciseSchema = new Schema({
   type: {
     type: String,
-    enum: ["Cardio", "Resistance"],
+    enum: ["cardio", "resistance"],
     required: "You must select an Exercise Type",
   },
   duration: {
@@ -15,24 +15,24 @@ const ExerciseSchema = new Schema({
   name: {
     type: String,
     trim: true,
-    minlength: 2,
+    minlength: 1,
     required: "You must specify a Name",
   },
   weight: {
     type: Number,
-    min: 1,
+    min: 0,
   },
   reps: {
     type: Number,
-    min: 1,
+    min: 0,
   },
   sets: {
     type: Number,
-    min: 1,
+    min: 0,
   },
   distance: {
     type: Number,
-    min: 1
+    min: 0
   }
 });
 
