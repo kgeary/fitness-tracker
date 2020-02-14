@@ -46,7 +46,7 @@ module.exports = function (app) {
 
   // GET /api/workouts/range
   app.get("/api/workouts/range", async (req, res) => {
-    const data = await db.Workout.find({}).sort({ 'day': 1 }).limit(7);
-    res.json(data);
+    const data = await db.Workout.find({}).sort({ 'day': 1 });
+    res.json(data.slice(-7));
   });
 }
