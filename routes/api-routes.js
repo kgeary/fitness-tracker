@@ -9,8 +9,19 @@ module.exports = function (app) {
 
   // GET /api/workouts
   app.get("/api/workouts", async (req, res) => {
-    const data = await db.Workout.find({}).sort({ 'day': 1 });
-    res.json(data);
+    const agg = await db.Workout.aggregate([
+      { $unwind: "$exercises" },
+      {
+        $group: {
+          _id: "$_id",
+          day: { "$first": "$day" },
+          exercises: { $push: "$exercises" },
+          totalDuration: { $sum: "$exercises.duration" },
+        }
+      },
+      { $sort: { day: 1 } }
+    ]);
+    res.json(agg);
   });
 
   // POST /api/workouts
